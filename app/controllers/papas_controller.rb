@@ -8,7 +8,14 @@ class PapasController < ApplicationController
   def match_pin
     pin = Pin.where(pin: params[:pin]).first()
     if pin.present?
-      pin.destroy
+      ActiveRecord::Base.transaction do
+        couple = Couple.new(
+          husband: params[:device_id],
+          wife: pin.device_id
+        )
+        couple.save!
+        pin.destroy
+      end
       render json: pin, only: [ :device_id, :pin ]
     else
       render json: { errors: [ :pin_not_found ] }
