@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20140912184433) do
     t.datetime "updated_at",            null: false
   end
 
-  add_index "pins", ["device_id"], name: "index_pins_on_device_id", using: :btree
-  add_index "pins", ["pin"], name: "index_pins_on_pin", using: :btree
+  add_index "pins", ["device_id"], name: "index_pins_on_device_id", unique: true, using: :btree
+  add_index "pins", ["pin"], name: "index_pins_on_pin", unique: true, using: :btree
 
 end

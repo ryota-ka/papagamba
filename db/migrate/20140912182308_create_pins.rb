@@ -6,7 +6,7 @@ class CreatePins < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :pins, :device_id
-    add_index :pins, :pin
+    add_index :pins, :device_id, unique: true
+    add_index :pins, :pin, unique: true
   end
 end
