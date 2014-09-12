@@ -18,7 +18,7 @@ class PapasController < ApplicationController
           husband: params[:device_id],
           wife: pin.device_id
         )
-        couple.save!
+        couple.save
         pin.destroy
       end
       render json: pin, only: [ :device_id, :pin ]
