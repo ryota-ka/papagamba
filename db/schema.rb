@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912182308) do
+ActiveRecord::Schema.define(version: 20140912184433) do
+
+  create_table "couples", force: true do |t|
+    t.string   "husband",    limit: 36, null: false
+    t.string   "wife",       limit: 36, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "couples", ["husband"], name: "index_couples_on_husband", unique: true, using: :btree
+  add_index "couples", ["wife"], name: "index_couples_on_wife", unique: true, using: :btree
 
   create_table "pins", force: true do |t|
     t.string   "device_id",  limit: 36, null: false
