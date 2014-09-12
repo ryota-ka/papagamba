@@ -1,8 +1,13 @@
 class PapasController < ApplicationController
 
   def generate_pin
-    pin = Pin.create(device_id: params[:device_id])
-    render json: pin, only: [ :device_id, :pin ]
+    pin = Pin.first_or_initialize(device_id: params[:device_id])
+
+    if pin.pin.present? || pin.save
+      render json: pin, only: [ :device_id, :pin ]
+    else
+      render json: { errors: [ :save_failed ] }
+    end
   end
 
   def match_pin
