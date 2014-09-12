@@ -47,7 +47,7 @@ class PapasController < ApplicationController
 
   def create_goal
     couple = Couple.where(husband: params[:device_id])
-    render json: { errors: [ :couple_not_found ] } unless couple.present?
+    render json: { errors: [ :couple_not_found ] } && return unless couple.present?
 
     goal = Goal.new(
       couple_id: couple.id,
@@ -60,6 +60,15 @@ class PapasController < ApplicationController
       render json: goal, only: [ :distance, :frequency, :prize, :mosaic_flg ]
     else
       render json: { errors: [ :save_failed ] }
+    end
+  end
+
+  def get_goal_by_couple_id
+    goal = Goal.where(couple_id: params[:couple_id]).last
+    if goal.present?
+      render :goal, only: [ :distance, :frequency, :prize, :mosaic_flg ]
+    else
+      render json: { errors: [ :goal_not_found ] }
     end
   end
 
