@@ -27,4 +27,22 @@ class PapasController < ApplicationController
     end
   end
 
+  def get_couple_by_husband
+    couple = Couple.where(husband: params[:device_id])
+    if couple.present?
+      render json: couple, only: [ :husband, :wife ]
+    else
+      render json: { errors: [ :couple_not_found ] }
+    end
+  end
+
+  def get_couple_by_wife
+    couple = Couple.where(wife: params[:device_id])
+    if couple.present?
+      render json: couple, only: [ :husband, :wife ]
+    else
+      render json: { errors: [ :couple_not_found ] }
+    end
+  end
+
 end
