@@ -189,3 +189,62 @@ img{
     color: #444444;
     text-align: center;
   }
+  .runContainer{
+	width:230px;
+	height:130px;
+	position:relative;
+	text-align:center;
+	margin:0px auto;
+}
+
+.bg{
+	width:230px;
+	height:7px;
+	background-image:image-url("bg.png") no-repeat top left;
+	position:absolute;
+	top:80px;
+	left:0px;
+}
+
+.runner{
+	width:30px;
+	height:29px;
+	background-image:image-url("runner.png") no-repeat top left;
+	position:absolute;
+	top:52px;
+	left:50px; //ここに距離のデータを入れる
+}
+
+.currentDist{
+	width:30px;
+	height:20px;
+	position:absolute;
+	top:90px;
+	left:50px; //ここに距離のデータを入れる。上と同じデータを入れる
+}
+
+.goalDist{
+	width:30px;
+	height:20px;
+	position:absolute;
+	top:90px;
+	left:195px;
+}	
+
+
+.start{
+	width:30px;
+	height:20px;
+	position:absolute;
+	top:52px;
+	left:-28px;
+}
+
+
+.goal{
+	width:30px;
+	height:20px;
+	position:absolute;
+	top:52px;
+	left:195px;
+}
