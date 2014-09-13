@@ -109,6 +109,7 @@ class PapasController < ApplicationController
     couple = Couple.find_by(husband: @device_id)
     log = Log.new(
       couple_id: couple.id,
+      distance: 0,
       starts_at: DateTime.now
     )
     if log.save
@@ -119,10 +120,15 @@ class PapasController < ApplicationController
   end
 
   def stop_running
-    log = Log.where(husband: @device_id).last
+    couple = Couple.find_by(husband: @device_id)
+    log = Log.where(couple_id: couple.id).last
     log.ends_at = DateTime.now
     log.distance = (log.ends_at - log.starts_at) * (10000 / 3600.0)
-
+    if log.save
+      redirect_to action: :h_3
+    else
+      redirect_to action: :h_2
+    end
   end
 
   private

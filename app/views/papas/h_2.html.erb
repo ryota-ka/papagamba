@@ -1,12 +1,18 @@
 <div class="page-header style1" >
   <h1>ランニング中</h1>
 </div>
-
-<div>
-<!-- 画像 -->
-</div>
+<div class="style1">
+			<div class="runContainer">
+				<div class="bg" ></div>
+				<div class="runner"></div>
+				<div class="goal">GOAL</div>
+				<div class="start">START</div>
+				<div class="currentDist">1.2km</div>
+				<div class="goalDist">3.2km</div>
+			</div>
+		</div>
 <div class="style2">
-  <form action="" method="POST">
-  <input type="submit" class="btn btn-lg btn-default" value="ラン終了" />
-  </form>
+  <%= form_tag('stop_running') do %>
+    <%= submit_tag 'ランニング終了', class: 'btn btn-lg btn-default' %>
+  <% end %>
 </div>

@@ -22,4 +22,7 @@ Rails.application.routes.draw do
   get 'w_1', to: 'papas#w_1'
   get 'w_2', to: 'papas#w_2'
 
+  post 'start_running', to: 'papas#start_running'
+  post 'stop_running', to: 'papas#stop_running'
+
 end
