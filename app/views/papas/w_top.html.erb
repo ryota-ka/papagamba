@@ -1,0 +1,103 @@
+<!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- navbar navbar-default って設定にすると白になる -->
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Ran</a></li>
+            <li><a href="#about">history</a></li>
+            <li><a href="#contact">prise</a></li>
+            <li><a href="#">config</a>
+            </li>
+            <li>
+            <form class="navbar-form navbar-right" role="form">
+
+          </form>
+          </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+
+
+         <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAGZmZgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide" height="900px">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Another example headline.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAFVVVQAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide" height="900px">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>One more for good measure.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide" height="900px">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>認証を完了する</h1>
+              <p>パパがんばっては、夫婦のスマートフォンをお互いに認証することから始まります。</p>
+              <p>パパのスマートフォンの認証をするのに必要な4桁のPINを発行します。</p>
+              <p><a id="pin-issue-button" class="btn btn-lg btn-primary" href="#" role="button">PINを発行する</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+    
+
+
+    <div class="container">
+    
+    </div><!-- /.container -->
+
+    <script type="text/javascript">
+      $(function() {
+        var device_id = '<%= @device_id %>';
+        $('#pin-issue-button').click(function(e) {
+          e.preventDefault();
+          $.post('/generate_pin', { device_id: device_id, authenticity_token: window._token }, function(data) {
+            alert(data.pin);
+            setInterval(function() {
+              $.get('/get_couple_by_wife', { device_id: device_id }, function(data) {
+                if (!data.errors) {
+                  location.href = '/w_1';
+                }
+              });
+            }, 5000);
+          });
+        });
+      });
+    </script>

@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'unicorn'
 gem 'execjs'
 gem 'therubyracer'
+
+gem 'carrierwave'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912184433) do
+ActiveRecord::Schema.define(version: 20140913014856) do
 
   create_table "couples", force: true do |t|
     t.string   "husband",    limit: 36, null: false
@@ -22,6 +22,29 @@ ActiveRecord::Schema.define(version: 20140912184433) do
 
   add_index "couples", ["husband"], name: "index_couples_on_husband", unique: true, using: :btree
   add_index "couples", ["wife"], name: "index_couples_on_wife", unique: true, using: :btree
+
+  create_table "goals", force: true do |t|
+    t.integer  "couple_id",                  null: false
+    t.integer  "distance",                   null: false
+    t.integer  "frequency",                  null: false
+    t.string   "prize",                      null: false
+    t.boolean  "mosaic_flg", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "goals", ["couple_id"], name: "index_goals_on_couple_id", using: :btree
+
+  create_table "logs", force: true do |t|
+    t.integer  "couple_id",  null: false
+    t.integer  "distance",   null: false
+    t.datetime "starts_at",  null: false
+    t.datetime "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "logs", ["couple_id"], name: "index_logs_on_couple_id", using: :btree
 
   create_table "pins", force: true do |t|
     t.string   "device_id",  limit: 36, null: false

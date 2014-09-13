@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  couple_id: 
+  distance: 1
+  frequency: 1
+  prize: 
+  mosaic_flg: false
+
+two:
+  couple_id: 
+  distance: 1
+  frequency: 1
+  prize: 
+  mosaic_flg: false

@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="page-header style1" >
+    <h1>目標<%= @goal.distance %>km</h1>
+</div>
+<div class="style1">
+  <h2>期間<%= (@goal.created_at - DateTime.now + 7.days).div(86400) %>日</h2>
+</div>
