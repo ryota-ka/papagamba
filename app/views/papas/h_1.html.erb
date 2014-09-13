@@ -1,0 +1,19 @@
+    <div class="container">
+      <div class="page-header style1" >
+      <h1>今週の目標</h1>
+      <p><%= if @goal.present? then (@goal.distance).to_s + ' km' else '未定' end %></p>
+    </div>
+    <div class="style1">
+      <h2>今日の目標</h2>
+    </div>
+    <div class="style2">
+      <p><%= if @goal.present? then (@goal.distance).div(@goal.frequency).to_s + ' km' else '未定' end %></p>
+    </div>
+    <div class="style2">
+      <form action="" method="POST">
+        <input type="submit" class="btn btn-lg btn-default" value="ラン開始" />
+      </form>
+    </div>
+    <div class="style2">
+      <a href=""><button id="watch-prize-button" type="button" class="btn btn-lg btn-info">ごほうびを見る</button></a>
+    </div>

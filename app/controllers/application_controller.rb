@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   def set_device_id
     cookies.permanent[:device_id] = SecureRandom.uuid if cookies.permanent[:device_id].blank?
+    @device_id = cookies.permanent[:device_id]
   end
 
 end

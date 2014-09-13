@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="page-header style1" >
+  <h1>一週間の目標</h1>
+</div>
+<%= form_for @goal, { action: :create_goal } do |f| %>
+
+<form action="" method="POST">
+<div class="style1">
+  <p>
+    <%= f.label :distance %>
+    <%= f.text_field :distance %> km
+  </p>
+</div>
+<div class="style2">
+  <p><span style="padding:6px 0px;font-size:16px;">週に</span>
+  <%= f.select :frequency, [ 1, 2, 3, 4, 5, 6, 7 ] %>
+  <span style="padding:6px 0px;font-size:16px;">回走る</span></p>
+</div>
+<div class="style1">
+  <h3>ごほうび</h3>
+  <%= f.file_field :prize %>
+</div>
+
+<div class="style2">
+  <%= f.check_box :mosaic_flg %>
+  <%= f.label 'モザイクをつける' %>
+</div>
+<div class="style2">
+  <%= f.submit '目標設定', html: { class: 'btn btn-lg btn-default' } %>
+</div>
+</form>
+<% end %>
+</div><!-- /.container -->
