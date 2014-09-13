@@ -6,6 +6,9 @@
     <div class="style1">
       <h2>今日の目標</h2>
     </div>
+    <div class="style1">
+      <%= image_tag 'graphe.png' %>
+    </div>
     <div class="style2">
       <p><%= if @goal.present? then (@goal.distance).div(@goal.frequency).to_s + ' km' else '未定' end %></p>
     </div>
